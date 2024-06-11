@@ -39,3 +39,6 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
     </tr>
   </tbody>
 </table>
+
+## Acknowledgment
+
