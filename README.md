@@ -17,11 +17,11 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
 ## 📁 Repository Structure
 
 ```plaintext
-├── submodule1
-├── submodule2
-├── submodule3
-├── submodule4
-├── submodule5
+├── colors
+├── clustering
+├── interactive
+├── utils
+├── data
 ├── submodule6
 └── submodule7
 ```
