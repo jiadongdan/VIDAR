@@ -1,5 +1,4 @@
 
-#Checking again into my branch
 ![Logo](logo/logo_h.png)
 
 # VIDAR: Visualization Interface for Data Analytics and Reduction
