@@ -2,7 +2,7 @@
 
 # VIDAR: Visualization Interface for Data Analytics and Reduction
 
-Welcome to **VIDAR**.
+Welcome to **VIDAR** (pronounced as /ˈviː.dɑːr/).
 
 ## 🚀 Project Summary
 
