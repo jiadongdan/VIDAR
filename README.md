@@ -42,3 +42,5 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
 
 ## Acknowledgment
 
+We extend our heartfelt thanks to Schmidt Futures and the Oxford Doctoral Training Center for their indispensable support of the VIDAR project. Schmidt Futures generously funded our crucial in-person meeting in Oxford, fostering significant collaboration among team members, while the Oxford Doctoral Training Center provided invaluable technical support and organized workshops that propelled our project forward. We deeply appreciate their contributions, which have been vital to our success.
+
