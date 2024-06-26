@@ -35,7 +35,7 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/IndrajitWadgaonkar"><img src="https://placehold.co/400x400" width="100px;" alt="IndrajitWadgaonkar"/><br /><a href="https://github.com/IndrajitWadgaonkar" title="Code">Indrajit Wadgaonkar</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jiadongdan"><img src="https://avatars.githubusercontent.com/u/15790176?v=4" width="100px;" alt="jiadongdan"/><br /><a href="https://github.com/jiadongdan" title="Code">Jiadong Dan</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/klai001"><img src="https://placehold.co/400x400" width="100px;" alt="klai001"/><br /><a href="https://github.com/klai001" title="Code">Kei Onn Lai</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jiadongdan/longyangking"><img src="https://placehold.co/400x400" width="100px;" alt="longyangking"/><br /><a href="https://github.com/longyangking" title="Code">Yang Long</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jiadongdan/longyangking"><img src="https://v5.airtableusercontent.com/v3/u/30/30/1719417600000/dA2LS8dKGhC1_arN8eiNZg/fO7niigPvWRYna4a--41obza2obC-qGdDAPvIJ1IoYF8RC50wEPf759pbf9ZVG-bXNBhJaHMk21rtA4p7cLT29gHfIyJR8qeCM2JCPJSduB3BjHf-55vLsTK19elLcKZKILXJSYNSkt6su2FRrc4Dw/O66cD2RPpQt3VxoIUvVNLKSbR9LNWSnuzINBs7D0Bw4" width="100px;" alt="longyangking"/><br /><a href="https://github.com/longyangking" title="Code">Yang Long</a></td>
     </tr>
   </tbody>
 </table>
