@@ -1,95 +1,55 @@
 import numpy as np
-#from statistics import mode
+# from statistics import mode
 import matplotlib.pyplot as plt
 from scipy.stats import mode
 from matplotlib.widgets import LassoSelector
 from matplotlib.path import Path
-from .colors import generate_colors_from_lbs
-from .colormaps import color_palette
-from ..clustering.auto_clustering import seg_lbs
 
 
-#from skimage.feature import register_translation
-from skimage.registration import phase_cross_correlation
-from skimage.morphology import disk
-from skimage.transform import rotate, warp_polar
-from sklearn.utils import check_random_state
+def colors_from_lbs(lbs, colors=None):
+    mpl_20 = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+              '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
+              '#3397dc', '#ff993e', '#3fca3f', '#df5152', '#a985ca',
+              '#ad7165', '#e992ce', '#999999', '#dbdc3c', '#35d8e9']
 
-def get_angle(img1, img2):
-    mask = disk(img1.shape[0]//2)
-    img1_rot = warp_polar(img1*mask)
-    img2_rot = warp_polar(img2*mask)
-    shifts, error, phasediff = phase_cross_correlation(img1_rot, img2_rot, upsample_factor=20)
-    return shifts[0]
-
-def _register_imgs(imgs):
-    ref = imgs[0]
-    for i, img in enumerate(imgs):
-        a = get_angle(img, ref)
-        img_rot = rotate(img, angle=a, order=1)
-        ref = (ref*(i+1) + img_rot)/(i+2)
-    return ref
-
-def register_imgs(imgs, max_samples=15, seed=48):
-    if len(imgs) > max_samples:
-        rng = check_random_state(seed=seed)
-        mask = rng.choice(len(imgs), max_samples, replace=False)
-        imgs = imgs[mask]
-    return _register_imgs(imgs)
-
-
-def _update_pts(ax, pts, **kwargs):
-    if ax.collections: # ax.collections is not empty
-        ax.collections[0].set_offsets(pts)
+    if colors is None:
+        colors = np.array(mpl_20)
     else:
-        ax.scatter(pts[:, 0], pts[:, 1], **kwargs)
+        colors = np.array(colors)
+    lbs = np.array(lbs) % len(colors)
+    return colors[lbs]
 
 
-def _update_mean_patch(ax, p, cmap, clip=True):
+def _update_mean_patch(ax, p, cmap):
     if ax.images:  # ax.images not empty
         ax.images[0].set_data(p)
         ax.images[0].set_cmap(cmap)
     else:
         ax.imshow(p, cmap=cmap)
-    if clip:
-        c = plt.Circle((p.shape[0] / 2 - 0.25, p.shape[1] / 2 - 0.25), radius=p.shape[0] / 2, transform=ax.transData)
-        ax.images[0].set_clip_path(c)
 
 
 class InteractiveCluster:
 
-    def __init__(self, fig, X, img, pts, ps, lbs=None, clip=True, max_samples=15, rotate=False, **kwargs):
+    def __init__(self, fig, pts, ps, lbs=None, **kwargs):
         self.fig = fig
-        self.ax_img = fig.axes[0]
-        self.ax_cluster = fig.axes[1]
-        self.ax_patch = fig.axes[2]
+        self.ax_cluster = fig.axes[0]
+        self.ax_patch = fig.axes[1]
 
         if lbs is None:
-            self.lbs_ = seg_lbs(X)
+            self.lbs_ = np.array([0] * len(pts))
         else:
             self.lbs_ = lbs
-        self.colors = generate_colors_from_lbs(self.lbs_)
+        self.colors = colors_from_lbs(self.lbs_)
 
-        self.path_collection = self.ax_cluster.scatter(X[:, 0], X[:, 1], c=self.colors, **kwargs)
-        for e in np.unique(self.lbs_):
-            x, y = X[self.lbs_ == e].mean(axis=0)
-            self.ax_cluster.text(x, y, s=e, transform=self.ax_cluster.transData)
+        self.path_collection = self.ax_cluster.scatter(pts[:, 0], pts[:, 1], c=self.colors, **kwargs)
         self.ax_cluster.axis('equal')
-        self.ax_img.imshow(img)
-        self.ax_img.axis('off')
         self.ax_patch.set_xlim(0 - 0.5, ps.shape[2] - 0.5)
         self.ax_patch.set_ylim(ps.shape[1] - 0.5, 0 - 0.5)
 
-        self.img = img
         self.pts = pts
-        self.X = X
         self.ps = ps
-        self.clip = clip
-        self.max_samples = max_samples
-        self.rotate = rotate
 
         self.ind = None
-        self.X_selected = None
         self.pts_selected = None
 
         self.lbs = np.array(len(self.pts) * [-1])
@@ -101,23 +61,13 @@ class InteractiveCluster:
 
     def onselect(self, event):
         path = Path(event)
-        self.ind = np.nonzero(path.contains_points(self.X))[0]
+        self.ind = np.nonzero(path.contains_points(self.pts))[0]
         if self.ind.size != 0:
             self.pts_selected = self.pts[self.ind]
-            self.X_selected = self.X[self.ind]
 
-            # mode now only support numeric type
-            #c = mode(self.colors[self.ind])[0][0]
-            cs, cnts = np.unique(self.colors[self.ind], return_counts=True)
-            c = cs[np.argmax(cnts)]
-            # update pts
-            _update_pts(self.ax_img, self.pts_selected, color='r', s=3)
-            # update mean patch
-            if self.rotate:
-                p = register_imgs(self.ps[self.ind], self.max_samples)
-            else:
-                p = self.ps[self.ind].mean(axis=0)
-            _update_mean_patch(self.ax_patch, p, cmap=color_palette(c), clip=self.clip)
+            # get the mean patch
+            p = self.ps[self.ind].mean(axis=0)
+            _update_mean_patch(self.ax_patch, p, cmap='gray')
             self.fig.canvas.draw_idle()
 
     def press_key(self, event):
@@ -128,8 +78,7 @@ class InteractiveCluster:
                 print("One cluster has been selected.")
 
 
-def interactive_clusters(X, img, pts, ps, lbs=None, clip=True, max_samples=15, rotate=False, **kwargs):
-    fig, ax = plt.subplots(1, 3, figsize=(12, 4))
-    app = InteractiveCluster(fig, X, img, pts, ps, lbs, clip, max_samples, rotate, **kwargs)
+def interactive_clusters(pts, ps, lbs=None, **kwargs):
+    fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+    app = InteractiveCluster(fig, pts, ps, lbs, **kwargs)
     return app
-
