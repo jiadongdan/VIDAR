@@ -2,7 +2,7 @@ import sys
 sys.path.append('..')
 
 import numpy as np
-from vidar import InteractiveKMeans, interactive_kmeans
+from vidar import interactive_kmeans
 
 rng = np.random.RandomState(0)
 n_samples = 1000
@@ -13,6 +13,6 @@ X = np.concatenate([
     rng.multivariate_normal(mean=[0.3, 1], cov=cov, size=n_samples)
     ])
 
-n_clusters = 3
+n_clusters = 2
 app = interactive_kmeans(X, n_clusters)
 app.show()

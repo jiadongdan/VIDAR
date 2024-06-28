@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
 from matplotlib.widgets import PolygonSelector
 from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
 
 
 def colors_from_lbs(lbs, colors=None):
@@ -80,7 +81,77 @@ class InteractiveKMeans:
         plt.tight_layout()
         plt.show()
 
+class InteractivePCA:
+
+    def __init__(self, fig, axes, X, n_components, **kwargs):
+        self.fig = fig
+        self.X = X
+        self.ax_orig, self.ax_redim = axes
+        self.n_components = n_components
+
+        self.pca = PCA(n_components=n_components).fit(X)
+        self.component = self.pca.components_.reshape(-1)
+        self.x_center = np.mean(X, axis=0)
+
+        self.ax_orig.scatter(X[:, 0], X[:, 1], alpha=0.3, label="samples")
+        self.ax_orig.set(
+            aspect="auto", 
+            title="2-dimensional dataset with principal components",
+            xlabel="first feature",
+            ylabel="second feature",
+        )
+
+        self.ax_orig.plot(
+                [self.x_center[0], self.component[0]],
+                [self.x_center[1], self.component[1]],
+                label=f"PCA",
+                linewidth=5,
+                color=f"purple",
+            )
+
+        #self.comp_vector = [self.component, selfx_center]
+        self.selector = PolygonSelector(self.ax_orig, onselect=self.onselect, 
+                           props=dict(color='r', linestyle='-', linewidth=3, alpha=0.6, label=f"Interactive"))
+
+        self.selector.verts = [self.x_center, self.x_center + self.component]
+
+        self.ax_orig.legend()
+        self.ax_redim.hist((self.X @ self.component.T - self.x_center @ self.component.T),50)
+        self.ax_redim.set(
+            aspect="auto",
+            title="1-dimensional dataset after dimension reduction",
+            xlabel="Main feature",
+            ylabel="Number of samples",
+        )
+
+    def onselect(self, verts):
+        _x_center, _total_vector = verts
+        _component = np.array(_total_vector) - np.array(_x_center)
+        self.ax_redim.clear()
+        self.ax_redim.hist((self.X @ _component.T - _x_center @ _component.T),50)
+        self.ax_redim.set(
+            aspect="auto",
+            title="1-dimensional dataset after dimension reduction",
+            xlabel="Main feature",
+            ylabel="Number of samples",
+        )
+
+        self.fig.canvas.draw()
+
+    def show(self):
+        plt.tight_layout()
+        plt.show()
+
+    def get_components(self):
+        return self.selector.verts
+
 def interactive_kmeans(X, n_clusters=2, **kwargs):
     fig, axes = plt.subplots(1, 2, figsize=(12, 6))
     app = InteractiveKMeans(fig, axes, X, n_clusters=n_clusters, **kwargs)
+    return app
+
+
+def interactive_PCA(X, n_components=1, **kwargs):
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+    app = InteractivePCA(fig, axes, X, n_components=n_components, **kwargs)
     return app
