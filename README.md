@@ -22,21 +22,19 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
 ├── clustering
 ├── interactive
 ├── utils
-├── data
-├── submodule6
-└── submodule7
+└── data
 ```
-## 💻 Developers
+## 💻 Developers: A-Z
 
 <table>
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ccalvotusell"><img src="https://avatars.githubusercontent.com/u/92177197?v=4" width="100px;" alt="ccalvotusell"/><br /><a href="https://github.com/ccalvotusell" title="Code">Carla Calvo-Tusell</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/elnazazizi"><img src="https://v5.airtableusercontent.com/v3/u/30/30/1719417600000/qVP3D5lXmBa0XodYjRZYlQ/RstHGkmBaADERQk22Cpfbz-ij3KADytjvoBNxcBT2wIAqxw39ddbKELT6Gv2EQh42nVC4R9GLGQKVJxsR7JGQAoAHfCZJgJim9WSunoPcI1zNL6vr9p69XDPlrSXfm2UjTrFALYPMy0dU61RUIIbBstnf0Mi2w3Hj-i92OVmu-E/4ukJqGaiej3h8cmn_C1vvChlSo5nb2aVJoTvD6fSOAE" width="100px;" alt="elnazaziz"/><br /><a href="https://github.com/elnazazizi" title="Code">Elnaz Azizi</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/IndrajitWadgaonkar"><img src="https://v5.airtableusercontent.com/v3/u/30/30/1719417600000/bOCmbeKLLsG17aaSUFkmng/o1-qIX16K_-zaIMbb09_yFvy-rrmdBGuvfZ9SkvmPGGNXDUzdJ9P4xQG4uIb4Ya4Khk8r9D6e5iP1HWoGQbtnD927AqEN8BWIdwZz3yDe7n9wkeB2BIYp3p2kg-jKQQR7uUe8hrNJL6z4gBH2VcfKA/Gj4SMHtgcpUHnHSYSBWs4fM41tVYzoMOF-wI9aGFAnQ" width="100px;" alt="IndrajitWadgaonkar"/><br /><a href="https://github.com/IndrajitWadgaonkar" title="Code">Indrajit Wadgaonkar</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/elnazazizi"><img src="https://avatars.githubusercontent.com/u/96113099?v=4" width="100px;" alt="elnazaziz"/><br /><a href="https://github.com/elnazazizi" title="Code">Elnaz Azizi</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/IndrajitWadgaonkar"><img src="https://avatars.githubusercontent.com/u/116434625?v=4" width="100px;" alt="IndrajitWadgaonkar"/><br /><a href="https://github.com/IndrajitWadgaonkar" title="Code">Indrajit Wadgaonkar</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jiadongdan"><img src="https://avatars.githubusercontent.com/u/15790176?v=4" width="100px;" alt="jiadongdan"/><br /><a href="https://github.com/jiadongdan" title="Code">Jiadong Dan</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/klai001"><img src="https://v5.airtableusercontent.com/v3/u/30/30/1719417600000/rEw_K-cIaiZs3fUMZTub3A/hiscTq8r4yE15YclrAhb0DwEeOdjmUXfJcwc542Ow7uUTOn4RbeVTwdMLWIemfi24WF6fUCT2_HS9I4FPwyfkKkmNdKcinhyi2eKiIzK6DwvmnvbeCsJh6WnrOFMbMZFum-r8pggxNZo9kfxEwxYkul3B6-4P4crJFi33IXFjVs/yNDVt4Va1vjyKB_pZszTQ1xqeCPYsyzE_tbNLxegd54" width="100px;" alt="klai001"/><br /><a href="https://github.com/klai001" title="Code">Kei Onn Lai</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jiadongdan/longyangking"><img src="https://v5.airtableusercontent.com/v3/u/30/30/1719417600000/dA2LS8dKGhC1_arN8eiNZg/fO7niigPvWRYna4a--41obza2obC-qGdDAPvIJ1IoYF8RC50wEPf759pbf9ZVG-bXNBhJaHMk21rtA4p7cLT29gHfIyJR8qeCM2JCPJSduB3BjHf-55vLsTK19elLcKZKILXJSYNSkt6su2FRrc4Dw/O66cD2RPpQt3VxoIUvVNLKSbR9LNWSnuzINBs7D0Bw4" width="100px;" alt="longyangking"/><br /><a href="https://github.com/longyangking" title="Code">Yang Long</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/klai001"><img src="https://avatars.githubusercontent.com/u/55043905?v=4" width="100px;" alt="klai001"/><br /><a href="https://github.com/klai001" title="Code">Kei Onn Lai</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jiadongdan/longyangking"><img src="https://avatars.githubusercontent.com/u/785195?v=4" width="100px;" alt="longyangking"/><br /><a href="https://github.com/longyangking" title="Code">Yang Long</a></td>
     </tr>
   </tbody>
 </table>
