@@ -24,7 +24,7 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
 ├── utils
 └── data
 ```
-## 💻 Developers
+## 💻 Developers: A-Z
 
 <table>
   <tbody>
