@@ -22,9 +22,7 @@ pip install git+https://github.com/jiadongdan/VIDAR.git
 ├── clustering
 ├── interactive
 ├── utils
-├── data
-├── submodule6
-└── submodule7
+└── data
 ```
 ## 💻 Developers
 
